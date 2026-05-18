@@ -93,7 +93,7 @@ impl Component for Chat {
                             .map(|u| UserProfile {
                                 name: u.into(),
                                 avatar: format!(
-                                    "https://avatars.dicebear.com/api/adventurer-neutral/{}.svg",
+                                    "https://api.dicebear.com/7.x/pixel-art/svg?seed={}",
                                     u
                                 )
                                 .into(),
@@ -141,7 +141,7 @@ impl Component for Chat {
         html! {
             <div class="flex w-screen">
                 <div class="flex-none w-56 h-screen bg-gray-100">
-                    <div class="text-xl p-3">{"Users"}</div>
+                    <div class="text-xl p-3 font-bold text-pink-600 border-b-2 border-gray-300 font-mono">{"🏆 Players"}</div>
                     {
                         self.users.clone().iter().map(|u| {
                             html!{
@@ -154,7 +154,7 @@ impl Component for Chat {
                                             <div>{u.name.clone()}</div>
                                         </div>
                                         <div class="text-xs text-gray-400">
-                                            {"Hi there!"}
+                                            {"Player Ready"}
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +163,7 @@ impl Component for Chat {
                     }
                 </div>
                 <div class="grow h-screen flex flex-col">
-                    <div class="w-full h-14 border-b-2 border-gray-300"><div class="text-xl p-3">{"💬 Chat!"}</div></div>
+                    <div class="w-full h-14 border-b-2 border-gray-300 bg-indigo-100 flex items-center"><div class="text-xl p-3 font-bold text-indigo-900 font-mono">{"🕹️ Multiplayer Chat"}</div></div>
                     <div class="w-full grow overflow-auto border-b-2 border-gray-300">
                         {
                             self.messages.iter().map(|m| {

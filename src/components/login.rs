@@ -27,11 +27,20 @@ pub fn login() -> Html {
     };
 
     html! {
-       <div class="bg-gray-800 flex w-screen">
-            <div class="container mx-auto flex flex-col justify-center items-center">
-                <form class="m-4 flex">
-                    <input {oninput} class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="Username" />
-                    <Link<Route> to={Route::Chat}> <button {onclick} disabled={username.len()<1} class="px-8 rounded-r-lg bg-violet-600	  text-white font-bold p-4 uppercase border-violet-600 border-t border-b border-r" >{"Go Chatting!"}</button></Link<Route>>
+        <div class="bg-indigo-900 flex w-screen h-screen justify-center items-center font-mono">
+            <div class="flex flex-col justify-center items-center bg-black p-10 border-4 border-pink-500 shadow-[8px_8px_0px_rgba(236,72,153,1)]">
+                <div class="text-6xl mb-4">{"👾"}</div>
+                <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500 mb-2 tracking-widest">
+                    {"ARCADE LOBBY"}
+                </h1>
+                <p class="text-green-400 mb-6 animate-pulse">{"INSERT COIN (Enter Player Name)"}</p>
+                <form class="flex w-full mt-4">
+                    <input {oninput} class="flex-grow p-4 border-2 border-green-500 bg-gray-900 text-green-400 focus:outline-none focus:ring-2 focus:ring-pink-500 placeholder-gray-600" placeholder="Player..."/>
+                    <Link<Route> to={Route::Chat}> 
+                        <button {onclick} disabled={username.len()<1} class="px-6 bg-pink-600 text-white font-bold p-4 uppercase hover:bg-pink-500 transition disabled:opacity-50 border-y-2 border-r-2 border-pink-500" >
+                            {"START 🎮"}
+                        </button>
+                    </Link<Route>>
                 </form>
             </div>
         </div>

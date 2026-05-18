@@ -16,3 +16,19 @@ Saat aplikasi *client* dijalankan, alurnya adalah sebagai berikut:
 4. *Client* menggunakan komponen **Event Bus** untuk menangkap pesan *broadcast* dari *server* dan langsung me-*render* pembaruan UI secara *real-time* tanpa perlu me-*refresh* browser.
 
 Proyek tutorial aslinya dibuat menggunakan versi *library* (seperti `wasm-bindgen`) dan modul *bundler* (`webpack`) yang saat ini sudah cukup usang. Hal ini menyebabkan ketidakcocokan (*incompatibility*) dengan *compiler* Rust modern, sehingga proses *build* ke WASM mengalami kegagalan. Oleh karena itu, saya perlu memperbarui *dependency* tersebut ke versi yang kompatibel agar aplikasi dapat berjalan sebagaimana mestinya tanpa harus mengubah struktur atau logika kode utama dari aplikasi *chat* itu sendiri.
+
+## Experiment 3.2: Add some creativities to the webclient
+
+**Execution Result:**
+**Halaman Login: (input username)**
+![Halaman Login:](login.png)
+**Chat Room:**
+![Chat Room](chat.png)
+
+**Question: What creative changes did you implement in the web client?**
+Pada eksperimen ini, saya merombak antarmuka pengguna (UI) dari aplikasi WebChat menjadi tema **"Retro 8-bit Arcade"**. Karena aplikasi menggunakan Tailwind CSS melalui Yew, kustomisasi dilakukan secara langsung dengan memodifikasi *utility classes* di dalam macro `html!`.
+
+Rincian kreativitas yang saya tambahkan meliputi:
+1. **Redesign Halaman Login (`login.rs`):** Mengubah estetika menjadi gaya *game retro* dengan *background* `indigo-900`. Kotak login didesain menyerupai mesin *arcade* dengan *solid shadow* bergaya 8-bit, font *monospace*, efek teks *gradient*, dan instruksi yang diubah menjadi "INSERT COIN (Enter Player Name)" lengkap dengan animasi `pulse` berkedip.
+2. **Kustomisasi Ruang Obrolan (`chat.rs`):** Mengganti bahasa bawaan agar sesuai dengan tema permainan. Judul "Users" diubah menjadi "🏆 Players", status *default* diubah menjadi "Ready Player 1", dan bagian atas obrolan diubah menjadi "🕹️ Multiplayer Chat".
+3. **Pembaruan Dynamic Avatar (Pixel Art):** Saya mempertahankan fitur avatar acak (*randomize avatar*) yang dihasilkan berdasarkan *username* pengguna, namun mengubah *endpoint* API ke DiceBear versi 7 dengan *style* `pixel-art`. Hasilnya, setiap *username* yang dimasukkan saat proses *login* akan menghasilkan karakter avatar 8-bit yang unik untuk masing-masing *user*, sangat mendukung gaya visual secara keseluruhan.
